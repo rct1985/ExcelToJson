@@ -52,8 +52,18 @@ public class XLSStructure {
 		int numColumes = rowName.getPhysicalNumberOfCells();
 		System.out.println("Processing sheet:" + sheet.getSheetName() + " rowNum is "+sheet.getLastRowNum()+" colNum is "+numColumes + " ...");
 		for (int i = Line_ValueBegin; i <= sheet.getLastRowNum(); i++) {
-			System.out.println("line:" + i + "...");
+			String l_stringLineTip = "lineNum:"+(i+1)+"...";
 			Row thisRow = sheet.getRow(i);
+			//允许有空行
+			//默认第一列为主键
+			String l_strMainKey = thisRow.getCell(0).getStringCellValue();
+			if(l_strMainKey.trim().equals("")){
+				l_stringLineTip += "empty line";
+				see(l_stringLineTip);
+				continue;
+			}
+			see(l_stringLineTip);
+						
 			JSONObject lineJsonObject = new JSONObject();
 			for (int j = 0; j < numColumes; j++) {
 				//System.out.println("colume:" + j + "..." + rowDesp.getCell(j).getStringCellValue());
@@ -126,13 +136,18 @@ public class XLSStructure {
 		int numColumes = rowName.getPhysicalNumberOfCells();
 		System.out.println("Processing sheet:" + sheet.getSheetName() + " rowNum is "+sheet.getLastRowNum()+" colNum is "+numColumes + " ...");
 		for (int i = Line_ValueBegin; i <= sheet.getLastRowNum(); i++) {
-			System.out.println("line:" + i + "...");
-			Row thisRow = sheet.getRow(i);
-			JSONObject lineJsonObject = new JSONObject();
-			
+			String l_stringLineTip = "lineNum:"+(i+1)+"...";
+			Row thisRow = sheet.getRow(i);								
 			//默认第一列为主键
 			String l_strMainKey = thisRow.getCell(0).getStringCellValue();
+			if(l_strMainKey.trim().equals("")){
+				l_stringLineTip += "empty line";
+				see(l_stringLineTip);
+				continue;
+			}
+			see(l_stringLineTip);
 			
+			JSONObject lineJsonObject = new JSONObject();
 			for (int j = 1; j < numColumes; j++) {
 				//System.out.println("colume:" + j + "..." + rowDesp.getCell(j).getStringCellValue());
 				char thisType = rowType.getCell(j).getStringCellValue()
@@ -249,6 +264,9 @@ public class XLSStructure {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+	}
+	
+	public void see(String p_stringContent){
+		System.out.println(p_stringContent);
 	}
 }
