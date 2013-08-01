@@ -1,0 +1,32 @@
+[
+	{
+		"CHS":"成功",
+		"EN":"Success",
+		"MainKey":"success"
+	},
+	{
+		"CHS":"失败",
+		"EN":"Fail",
+		"MainKey":"fail"
+	},
+	{
+		"CHS":"网络连接失败",
+		"EN":"error_network",
+		"MainKey":"error_network"
+	},
+	{
+		"CHS":"不能正常连接",
+		"EN":"error_network_alert",
+		"MainKey":"error_network_alert"
+	},
+	{
+		"CHS":"操作号:",
+		"EN":"message_operation_code",
+		"MainKey":"message_operation_code"
+	},
+	{
+		"CHS":"错误码:",
+		"EN":"message_error_code",
+		"MainKey":"message_error_code"
+	}
+]

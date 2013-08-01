@@ -48,16 +48,16 @@ public class XLSStructure {
 
 		// Cell testCell=sheet.getRow(2).getCell(2);
 		// System.out.println(testCell.getStringCellValue());
-		// int numValueLines=sheet.getLastRowNum()-Line_ValueBegin;
+		
 		int numColumes = rowName.getPhysicalNumberOfCells();
-		System.out.println("Processing sheet:" + sheet.getSheetName() + " rowNum is "+sheet.getLastRowNum()+" colNum is "+numColumes + " ...");
-		for (int i = Line_ValueBegin; i <= sheet.getLastRowNum(); i++) {
+		//int numRows = sheet.getPhysicalNumberOfRows();
+		int numRows = sheet.getLastRowNum() + 1;
+		see("Processing sheet:" + sheet.getSheetName() + " rowNum is "+numRows+" colNum is "+numColumes + " ...");
+		for (int i = Line_ValueBegin; i < numRows; i++) {
 			String l_stringLineTip = "lineNum:"+(i+1)+"...";
 			Row thisRow = sheet.getRow(i);
-			//允许有空行
-			//默认第一列为主键
-			String l_strMainKey = thisRow.getCell(0).getStringCellValue();
-			if(l_strMainKey.trim().equals("")){
+			//跳过空行
+			if(thisRow == null || thisRow.getCell(0)== null || getCellContent(thisRow.getCell(0)).equals("")){
 				l_stringLineTip += "empty line";
 				see(l_stringLineTip);
 				continue;
@@ -69,6 +69,12 @@ public class XLSStructure {
 				//System.out.println("colume:" + j + "..." + rowDesp.getCell(j).getStringCellValue());
 				char thisType = rowType.getCell(j).getStringCellValue()
 						.charAt(0);
+				
+				//跳过空的Cell
+				if(thisRow.getCell(j)==null || getCellContent(thisRow.getCell(j)).equals("")){
+					continue;
+				}
+				
 				switch (thisType) {
 				//注释,给策划看的,不导出json数据
 				case 'N':
@@ -129,29 +135,42 @@ public class XLSStructure {
 		Row rowDesp = sheet.getRow(Line_Description);
 		Row rowName = sheet.getRow(Line_Name);
 		Row rowType = sheet.getRow(Line_Type);
-
+		
+		
+		
 		// Cell testCell=sheet.getRow(2).getCell(2);
 		// System.out.println(testCell.getStringCellValue());
 		// int numValueLines=sheet.getLastRowNum()-Line_ValueBegin;
 		int numColumes = rowName.getPhysicalNumberOfCells();
-		System.out.println("Processing sheet:" + sheet.getSheetName() + " rowNum is "+sheet.getLastRowNum()+" colNum is "+numColumes + " ...");
-		for (int i = Line_ValueBegin; i <= sheet.getLastRowNum(); i++) {
+		//int numRows = sheet.getPhysicalNumberOfRows();
+		int numRows = sheet.getLastRowNum() + 1;
+		System.out.println("Processing sheet:" + sheet.getSheetName() + " rowNum is "+numRows+" colNum is "+numColumes + " ...");
+		for (int i = Line_ValueBegin; i < numRows; i++) {
 			String l_stringLineTip = "lineNum:"+(i+1)+"...";
-			Row thisRow = sheet.getRow(i);								
-			//默认第一列为主键
-			String l_strMainKey = thisRow.getCell(0).getStringCellValue();
-			if(l_strMainKey.trim().equals("")){
+			Row thisRow = sheet.getRow(i);
+						
+			//跳过空行
+			if(thisRow == null || thisRow.getCell(0)== null || getCellContent(thisRow.getCell(0)).equals("")){
 				l_stringLineTip += "empty line";
 				see(l_stringLineTip);
 				continue;
-			}
+			}			
 			see(l_stringLineTip);
+			//默认第一列为主键
+			String l_strMainKey = getCellContent(thisRow.getCell(0));
 			
 			JSONObject lineJsonObject = new JSONObject();
 			for (int j = 1; j < numColumes; j++) {
-				//System.out.println("colume:" + j + "..." + rowDesp.getCell(j).getStringCellValue());
+				//see("colume:" + j + "..." + rowDesp.getCell(j).getStringCellValue());
 				char thisType = rowType.getCell(j).getStringCellValue()
 						.charAt(0);
+				
+				
+				//跳过空的Cell				
+				if(thisRow.getCell(j)==null || getCellContent(thisRow.getCell(j)).equals("")){
+					continue;
+				}
+				
 				switch (thisType) {
 				//注释,给策划看的,不导出json数据
 				case 'N':
@@ -207,6 +226,27 @@ public class XLSStructure {
 		System.out.println("======================================");
 		System.out.println("Output Json Succeed!! Check the file at:" + outputName);
 		System.out.println("======================================");
+	}
+	
+	protected String getCellContent(Cell p_cell){
+		int l_iCellType = p_cell.getCellType();
+		String l_strResult="";
+		switch(l_iCellType){
+		case Cell.CELL_TYPE_STRING:
+			l_strResult = p_cell.getStringCellValue();
+			break;
+		case Cell.CELL_TYPE_NUMERIC:
+			l_strResult = ""+p_cell.getNumericCellValue();
+			//100.0->100
+			if(l_strResult.endsWith(".0")){
+				l_strResult = l_strResult.substring(0, l_strResult.length()-2);
+			}
+			break;
+		default:
+			l_strResult = p_cell.getStringCellValue();
+			break;
+		}
+		return l_strResult.trim();
 	}
 	
 	public void WriteJsonArray(JSONArray sheetArray, String outputName) {

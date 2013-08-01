@@ -1,0 +1,35 @@
+{
+	"Duration_BattleStep_Action_AffectedAccount":{
+		"value":1.5
+	},
+	"Duration_BattleStep_Action_MoveToTarget":{
+		"value":1
+	},
+	"Duration_BattleStep_Action_SponsorAttack":{
+		"value":1.5
+	},
+	"Duration_BattleStep_Action_SponsorBack":{
+		"value":1
+	},
+	"Duration_BattleStep_Action_SponsorReady":{
+		"value":1
+	},
+	"Duration_BattleStep_Animation":{
+		"value":3
+	},
+	"Duration_BattleStep_Film_SeniorSkill":{
+		"value":1.5
+	},
+	"Duration_BattleStep_Film_SuperSkill":{
+		"value":1.5
+	},
+	"Duration_BattleStep_Init":{
+		"value":0.1
+	},
+	"Duration_BattleStep_MoveInProgressBar":{
+		"value":-1
+	},
+	"Duration_BattleStep_Over":{
+		"value":-1
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"bg_a":{
+		"FileName":"bg_a.jpg",
+		"Url":"http://img3.3lian.com/2006/013/16/2005617192814535.jpg"
+	},
+	"bg_b":{
+		"FileName":"bg_b.jpg",
+		"Url":"http://img3.3lian.com/2006/013/16/2005617192843333.jpg"
+	},
+	"bg_c":{
+		"FileName":"bg_c.jpg",
+		"Url":"http://img3.3lian.com/2006/013/16/2005617193219610.jpg"
+	},
+	"bg_d":{
+		"FileName":"bg_d.jpg",
+		"Url":"http://img3.3lian.com/2006/013/16/2005617193451349.jpg"
+	},
+	"bg_e":{
+		"FileName":"bg_e.jpg",
+		"Url":"http://img3.3lian.com/2006/013/16/200561719365434.jpg"
+	},
+	"bg_f":{
+		"FileName":"bg_f.jpg",
+		"Url":"http://img3.3lian.com/2006/013/16/2005617193712391.jpg"
+	},
+	"bg_g":{
+		"FileName":"bg_g.jpg",
+		"Url":"http://img3.3lian.com/2006/013/16/2005617193759591.jpg"
+	},
+	"bg_h":{
+		"FileName":"bg_h.jpg",
+		"Url":"http://img3.3lian.com/2006/013/16/200561719412366.jpg"
+	}
+}

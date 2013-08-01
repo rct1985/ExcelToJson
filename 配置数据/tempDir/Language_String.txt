@@ -1,0 +1,26 @@
+{
+	"error_network":{
+		"CHS":"网络连接失败",
+		"EN":"error_network"
+	},
+	"error_network_alert":{
+		"CHS":"不能正常连接",
+		"EN":"error_network_alert"
+	},
+	"fail":{
+		"CHS":"失败",
+		"EN":"Fail"
+	},
+	"message_error_code":{
+		"CHS":"错误码:",
+		"EN":"message_error_code"
+	},
+	"message_operation_code":{
+		"CHS":"操作号:",
+		"EN":"message_operation_code"
+	},
+	"success":{
+		"CHS":"成功",
+		"EN":"Success"
+	}
+}
