@@ -12,7 +12,7 @@ Input_Path_Excel: ../配置数据/
 Output_Path_Json: /Users/raochongtao/Projects/MythLeague/MythLeague/Resources/ExcelData/
 WithMainKey: YES
 IS_Encrypt: NO
-MD5Code_File: /Users/raochongtao/Projects/MythLeague/MythLeague/Classes/Global/GlobalData.cpp
+MD5Code_File: /Users/raochongtao/Projects/MythLeague/MythLeague/Resources/ExcelData/Md5CheckCode.txt
 
 #全局数据表.xls
 -GlobalData

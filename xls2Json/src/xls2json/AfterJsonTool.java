@@ -14,6 +14,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
+
+import com.alibaba.fastjson.JSONObject;
 
 import xls2json.FileAndMd5Class;
 
@@ -28,6 +31,35 @@ public class AfterJsonTool {
 				ex.printStackTrace();
 			}
 			return "";
+		}
+		
+		//产生一个代码
+		public static void inserMd5CheckCodeToFile(){
+			//Entrance.s_globalDataFileName;
+			try{
+				
+				JSONObject l_jsonRoot = new JSONObject();
+				
+				//日期
+				SimpleDateFormat l_sDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");     
+				String l_strNow = l_sDateFormat.format(new java.util.Date());
+				l_jsonRoot.put("common_date", l_strNow);
+				
+				//是否加密
+				l_jsonRoot.put("common_is_encrpt", Entrance.s_bIsEncrypt?1:0);
+				
+				//遍历文件
+				for(int i=0; i<Entrance.s_strMd5Array.size(); i++){
+					l_jsonRoot.put(Entrance.s_strMd5Array.get(i).fileName, Entrance.s_strMd5Array.get(i).md5CheckCode);
+				}
+				XLSStructure.WriteJsonObject(l_jsonRoot, Entrance.s_globalDataFileName);
+				
+				
+				
+			}catch(Exception ex){
+				see(">"+ex.toString());
+				ex.printStackTrace();
+			}
 		}
 		
 		//产生新的GlobalData文件

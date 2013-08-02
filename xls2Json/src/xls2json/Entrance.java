@@ -205,7 +205,10 @@ public class Entrance {
 			
 			//把校验码写到指定文件中去
 			see("\noutput md5checkCode to sepecial file....");
-			AfterJsonTool.insertMd5CheckCode();
+			//AfterJsonTool.insertMd5CheckCode();
+			AfterJsonTool.inserMd5CheckCodeToFile();
+			
+			
 			see("All Process Over...\n\n");
 						
 		} catch (Exception ex) {

@@ -88,6 +88,7 @@ public class XLSStructure {
 				}
 				//整型或浮点型
 				case 'i':
+				case 'I':
 				case 'f': {
 					lineJsonObject.put(rowName.getCell(j).getStringCellValue(),
 							thisRow.getCell(j).getNumericCellValue());
@@ -184,6 +185,7 @@ public class XLSStructure {
 				}
 				//整型或浮点型
 				case 'i':
+				case 'I':
 				case 'f': {
 					lineJsonObject.put(rowName.getCell(j).getStringCellValue(),
 							thisRow.getCell(j).getNumericCellValue());
@@ -249,7 +251,7 @@ public class XLSStructure {
 		return l_strResult.trim();
 	}
 	
-	public void WriteJsonArray(JSONArray sheetArray, String outputName) {
+	public static void WriteJsonArray(JSONArray sheetArray, String outputName) {
 
 		String jsonString = JSONArray.toJSONString(sheetArray, true);
 		try {
@@ -267,7 +269,7 @@ public class XLSStructure {
 
 	}
 	
-	public void WriteJsonObject(JSONObject sheetObject, String outputName) {
+	public static void WriteJsonObject(JSONObject sheetObject, String outputName) {
 
 		String jsonString = JSONObject.toJSONString(sheetObject, true);
 		try {
