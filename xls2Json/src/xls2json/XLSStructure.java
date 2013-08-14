@@ -234,6 +234,33 @@ public class XLSStructure {
 		int l_iCellType = p_cell.getCellType();
 		String l_strResult="";
 		switch(l_iCellType){
+		case Cell.CELL_TYPE_BLANK:
+			l_strResult = "";
+			break;
+		case Cell.CELL_TYPE_BOOLEAN:
+			l_strResult = "";
+			break;
+		//
+		case Cell.CELL_TYPE_FORMULA:{
+			switch(p_cell.getCachedFormulaResultType()) {
+            case Cell.CELL_TYPE_NUMERIC:
+                //System.out.println("Last evaluated as: " + p_cell.getNumericCellValue());
+                l_strResult = ""+p_cell.getNumericCellValue();
+    			//100.0->100
+    			if(l_strResult.endsWith(".0")){
+    				l_strResult = l_strResult.substring(0, l_strResult.length()-2);
+    			}
+                break;
+            case Cell.CELL_TYPE_STRING:
+                //System.out.println("Last evaluated as \"" + p_cell.getRichStringCellValue() + "\"");
+                l_strResult = p_cell.getStringCellValue();
+                break;
+            default:
+            	l_strResult = "";
+            	break;
+			}
+		}
+			break;
 		case Cell.CELL_TYPE_STRING:
 			l_strResult = p_cell.getStringCellValue();
 			break;
