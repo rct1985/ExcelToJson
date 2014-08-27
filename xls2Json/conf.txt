@@ -9,16 +9,15 @@
  */
 
 Input_Path_Excel: ../配置数据/
-Output_Path_Json: /Users/raochongtao/Projects/MythLeague/MythLeague/Resources/ExcelData/
+Output_Path_Json: /Users/raochongtao/TempMythLeague/Client/MythLeague/Resources/ExcelData/
+
 WithMainKey: YES
 IS_Encrypt: NO
-MD5Code_File: /Users/raochongtao/Projects/MythLeague/MythLeague/Resources/ExcelData/Md5CheckCode.txt
+
+MD5Code_File:/Users/raochongtao/TempMythLeague/Client/MythLeague/Resources/ExcelData/Md5CheckCode.txt
 
 #全局数据表.xls
 -GlobalData
-
-#战斗演示.xls
--Battle_Sequence_Show
 
 #语言包.xls
 -Language_String
@@ -28,3 +27,13 @@ MD5Code_File: /Users/raochongtao/Projects/MythLeague/MythLeague/Resources/ExcelD
 
 #技能配置.xls
 -Skill_Data_Client
+-Buff_Data_Client
+
+#阵营表.xls
+-HordeCityData_Client
+
+#PVE数据表.xls
+-PVEData_BigNode_Client
+-PVEData_SmallNode_Client
+
+

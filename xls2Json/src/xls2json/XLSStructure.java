@@ -56,7 +56,7 @@ public class XLSStructure {
 		for (int i = Line_ValueBegin; i < numRows; i++) {
 			String l_stringLineTip = "lineNum:"+(i+1)+"...";
 			Row thisRow = sheet.getRow(i);
-			//跳过空行
+			//跳过空行			
 			if(thisRow == null || thisRow.getCell(0)== null || getCellContent(thisRow.getCell(0)).equals("")){
 				l_stringLineTip += "empty line";
 				see(l_stringLineTip);
@@ -67,8 +67,18 @@ public class XLSStructure {
 			JSONObject lineJsonObject = new JSONObject();
 			for (int j = 0; j < numColumes; j++) {
 				//System.out.println("colume:" + j + "..." + rowDesp.getCell(j).getStringCellValue());
-				char thisType = rowType.getCell(j).getStringCellValue()
-						.charAt(0);
+				char thisType = 'i';
+				try{
+					String l_strType = rowType.getCell(j).getStringCellValue();
+					if(l_strType.trim() == ""){
+						see("empty colume as Index " + j);
+						break;
+					}else{
+						thisType = l_strType.charAt(0);
+					}
+				}catch(Exception ex){
+					see("Error When charAt and columesIndex is:  <" + j + ">  ");
+				}
 				
 				//跳过空的Cell
 				if(thisRow.getCell(j)==null || getCellContent(thisRow.getCell(j)).equals("")){
@@ -82,8 +92,10 @@ public class XLSStructure {
 					
 				//字符串
 				case 's': {
+					//lineJsonObject.put(rowName.getCell(j).getStringCellValue(),
+							//thisRow.getCell(j).getStringCellValue());
 					lineJsonObject.put(rowName.getCell(j).getStringCellValue(),
-							thisRow.getCell(j).getStringCellValue());
+							getCellContent(thisRow.getCell(j)));
 					break;
 				}
 				//整型或浮点型
@@ -163,9 +175,19 @@ public class XLSStructure {
 			JSONObject lineJsonObject = new JSONObject();
 			for (int j = 1; j < numColumes; j++) {
 				//see("colume:" + j + "..." + rowDesp.getCell(j).getStringCellValue());
-				char thisType = rowType.getCell(j).getStringCellValue()
-						.charAt(0);
 				
+				char thisType = 'i';
+				try{
+					String l_strType = rowType.getCell(j).getStringCellValue();
+					if(l_strType.trim() == ""){
+						see("empty colume as Index " + j);
+						break;
+					}else{
+						thisType = l_strType.charAt(0);
+					}
+				}catch(Exception ex){
+					see("Error When charAt and columesIndex is:  <" + j + ">  ");
+				}
 				
 				//跳过空的Cell				
 				if(thisRow.getCell(j)==null || getCellContent(thisRow.getCell(j)).equals("")){
@@ -179,8 +201,10 @@ public class XLSStructure {
 					
 				//字符串
 				case 's': {
+					//lineJsonObject.put(rowName.getCell(j).getStringCellValue(),
+							//thisRow.getCell(j).getStringCellValue());
 					lineJsonObject.put(rowName.getCell(j).getStringCellValue(),
-							thisRow.getCell(j).getStringCellValue());
+							getCellContent(thisRow.getCell(j)));
 					break;
 				}
 				//整型或浮点型

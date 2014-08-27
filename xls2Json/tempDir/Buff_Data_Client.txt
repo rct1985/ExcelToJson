@@ -1,0 +1,32 @@
+{
+	"30000":{
+		"description":"buff_des_00",
+		"name":"buff_name_00",
+		"res_name":[
+			"effect_cyclone_behind",
+			"effect_cyclone_front"
+		],
+		"res_offset":[
+			"0,10",
+			"0,10"
+		]
+	},
+	"30001":{
+		"description":"buff_des_01",
+		"name":"buff_name_01",
+		"res_name":["zhongdu"],
+		"res_offset":["0,50"]
+	},
+	"30002":{
+		"description":"buff_des_02",
+		"name":"buff_name_02",
+		"res_name":["effect_buff"],
+		"res_offset":["0,100"]
+	},
+	"30003":{
+		"description":"buff_des_03",
+		"name":"buff_name_03",
+		"res_name":["zengyi"],
+		"res_offset":["0,100"]
+	}
+}

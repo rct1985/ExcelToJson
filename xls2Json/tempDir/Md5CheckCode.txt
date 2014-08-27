@@ -1,0 +1,9 @@
+{
+	"Battle_Sequence_Show":"476f853f16e9302a4cab07571f045c5c",
+	"GlobalData":"f3d15d13aa12786b0d5bf7b712691848",
+	"Language_String":"e7122ba39a92072dae4a454c2c4b8437",
+	"Resource_Need_Update":"881792c75bdf71f5d3bf7147a625b46d",
+	"Skill_Data_Client":"5c0126ae95d0a93f12d271cdb7f3d728",
+	"common_date":"2013-08-02 02:28:26",
+	"common_is_encrpt":0
+}
